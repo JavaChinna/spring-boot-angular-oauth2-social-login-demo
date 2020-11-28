@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Angular10SocialLogin": {
+    "Angular11SocialLogin": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Angular10SocialLogin",
+            "outputPath": "dist/Angular11SocialLogin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -39,7 +39,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -62,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Angular10SocialLogin:build"
+            "browserTarget": "Angular11SocialLogin:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Angular10SocialLogin:build:production"
+              "browserTarget": "Angular11SocialLogin:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Angular10SocialLogin:build"
+            "browserTarget": "Angular11SocialLogin:build"
           }
         },
         "test": {
@@ -110,15 +109,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Angular10SocialLogin:serve"
+            "devServerTarget": "Angular11SocialLogin:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Angular10SocialLogin:serve:production"
+              "devServerTarget": "Angular11SocialLogin:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "Angular10SocialLogin"
+  "defaultProject": "Angular11SocialLogin"
 }
