@@ -1,43 +1,7 @@
-# Angular 10 JWT Authentication example
+# Spring Boot 2 + Angular 10: User Login, Registration using JWT Authentication and OAuth2 Social Login with Facebook, Google, LinkedIn, and Github using Spring Security 5
 
-For more detail, please visit:
-> [Angular 10 JWT Authentication with Web API](https://bezkoder.com/angular-10-jwt-auth/)
+[Creating Backend - Spring REST API - Part 1](https://www.javachinna.com/2020/10/23/spring-boot-angular-10-user-registration-oauth2-social-login-part-1/)
 
-## With Spring Boot back-end
+[Creating Backend - Spring REST API - Part 2](https://www.javachinna.com/2020/10/23/spring-boot-angular-10-user-registration-oauth2-social-login-part-2/)
 
-> [Angular 10 + Spring Boot: JWT Authentication & Authorization example](https://bezkoder.com/angular-10-spring-boot-jwt-auth/)
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
-
-## With Node.js Express back-end
-
-> [Angular 10 + Node.js Express: JWT Authentication & Authorization example](https://bezkoder.com/node-js-express-angular-10-jwt-auth/)
-
-Open `app/_helpers/auth.interceptor.js`, modify the code to work with **x-access-token** like this:
-```js
-...
-
-// const TOKEN_HEADER_KEY = 'Authorization'; // for Spring Boot back-end
-const TOKEN_HEADER_KEY = 'x-access-token';   // for Node.js Express back-end
-
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  ...
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    ...
-    if (token != null) {
-      // for Spring Boot back-end
-      // authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
-
-      // for Node.js Express back-end
-      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
-    }
-    return next.handle(authReq);
-  }
-}
-
-...
-```
-
-Run `ng serve --port 8081` for a dev server. Navigate to `http://localhost:8081/`.
+[Creating Angular 10 Client Application - Part 3](https://www.javachinna.com/2020/10/28/spring-boot-angular-10-user-registration-oauth2-social-login-part-3/)
