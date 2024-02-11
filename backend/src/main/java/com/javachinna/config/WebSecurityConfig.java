@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
@@ -38,13 +39,17 @@ import com.javachinna.security.oauth2.OAuth2AuthenticationSuccessHandler;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
+	public WebSecurityConfig(@Lazy UserDetailsService userDetailsService, @Lazy CustomOidcUserService customOidcUserService) {
+		super();
+this.customOidcUserService = customOidcUserService;
+		this.userDetailsService = userDetailsService;
+	}
+
 	private UserDetailsService userDetailsService;
 
 	@Autowired
 	private CustomOAuth2UserService customOAuth2UserService;
 
-	@Autowired
 	CustomOidcUserService customOidcUserService;
 
 	@Autowired
@@ -53,8 +58,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	@Override
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 

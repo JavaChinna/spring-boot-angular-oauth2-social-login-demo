@@ -40,14 +40,14 @@ public class TokenProvider {
 	}
 
 	public Long getUserIdFromToken(String token) {
-		Claims claims = Jwts.parser().setSigningKey(appProperties.getAuth().getTokenSecret()).parseClaimsJws(token).getBody();
+		Claims claims = Jwts.parser().setSigningKey(appProperties.getAuth().getTokenSecret()).build().parseClaimsJws(token).getBody();
 
 		return Long.parseLong(claims.getSubject());
 	}
 
 	public boolean validateToken(String authToken) {
 		try {
-			Jwts.parser().setSigningKey(appProperties.getAuth().getTokenSecret()).parseClaimsJws(authToken);
+			Jwts.parser().setSigningKey(appProperties.getAuth().getTokenSecret()).build().parseClaimsJws(authToken);
 			return true;
 		} catch (SignatureException ex) {
 			logger.error("Invalid JWT signature");

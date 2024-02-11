@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -24,9 +25,12 @@ import com.javachinna.exception.OAuth2AuthenticationProcessingException;
 import com.javachinna.service.UserService;
 
 @Service
-public class CustomOAuth2UserService extends DefaultOAuth2UserService {
+public class CustomOAuth2UserService  extends DefaultOAuth2UserService {
 
-	@Autowired
+	public CustomOAuth2UserService(@Lazy UserService userService) {
+		super();
+		this.userService = userService;
+	}
 	private UserService userService;
 
 	@Autowired
